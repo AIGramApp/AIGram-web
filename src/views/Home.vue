@@ -1,5 +1,10 @@
 <template>
     <div class="container mx-auto px-5 my-20">
+        <template v-if="bookmarkMode">
+            <h1 class="text-center">Your bookmarks</h1>
+        </template>
+
+
         <template v-if="feed.length > 0">
             <card v-for="item in feed" :item="item" :key="item.link" @bookmark="setBookmark"></card>
         </template>
@@ -18,14 +23,14 @@
 import { Component, Vue } from "vue-property-decorator";
 import { State } from "vuex-class";
 import Card from "@/components/Card.vue";
-import { FeedItem } from "../models";
+import { FeedItem } from "@/models";
 import { AppState } from "@/store";
+import { mixins } from 'vue-class-component';
+import BaseComponent from '@/BaseComponent';
 @Component({
     components: { Card }
 })
-export default class Home extends Vue {
-    @State
-    feed!: Array<FeedItem>;
+export default class Home extends mixins(BaseComponent) {
 
     setBookmark(item: FeedItem) {
         let bookmarks = this.state.bookmarks;
@@ -37,9 +42,6 @@ export default class Home extends Vue {
         }
         this.$store.commit("setBookmarks", bookmarks);
         this.$store.dispatch("saveBookmarks");
-    }
-    get state() {
-        return this.$store.state as AppState;
     }
 }
 </script>

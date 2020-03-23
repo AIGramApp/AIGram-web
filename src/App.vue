@@ -7,7 +7,7 @@
                 <div class="flex items-center -mx-6">
                     <div class="lg:w-1/4 xl:w-1/5 pl-6 pr-6">
                         <div class="flex items-center">
-                            <a href="/" class="block font-bold">AIGram</a>
+                            <router-link to="/" class="block font-bold">AIGram</router-link>
                         </div>
                     </div>
 
@@ -50,10 +50,11 @@
                         </div>
 
                         <div class="flex items-center justify-between w-1/4 px-6">
-                            <div class="flex justify-start items-center text-gray-500">
+                            <div class="flex justify-start items-center">
                                 <a
-                                    class="block flex items-center hover:text-gray-700 mr-5"
-                                    href="https://twitter.com/tailwindcss"
+                                    class="block flex items-center mr-5"
+                                    :class="{'text-gray-700': bookmarkMode}"
+                                    @click="bookmarkMode = !bookmarkMode"
                                 >
                                     <svg
                                         class="fill-current w-5 h-5"
@@ -81,20 +82,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import feedData from "@/feed.json";
 import { AppState } from "./store";
+import { mixins } from 'vue-class-component';
+import BaseComponent from '@/BaseComponent'
 @Component({})
-export default class App extends Vue {
+export default class App extends mixins(BaseComponent) {
     mounted() {
         this.$store.commit("setFeed", feedData);
         this.$store.dispatch("loadBookmarks");
-    }
-    get state() {
-        return this.$store.state as AppState;
-    }
-    get search() {
-        return this.state.search;
-    }
-    set search(value: string) {
-        this.$store.commit("setSearch", value);
     }
     updateSearch() {
         if (this.search == "") {

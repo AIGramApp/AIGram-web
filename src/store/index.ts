@@ -9,13 +9,16 @@ export interface AppState {
     search: string;
 
     bookmarks: string[];
+
+    bookmarkMode: boolean;
 }
 
 const store: StoreOptions<AppState> = {
     state: {
         feed: [],
         search: "",
-        bookmarks: []
+        bookmarks: [],
+        bookmarkMode: false
     },
     mutations: {
         setFeed(state, feed) {
@@ -26,6 +29,9 @@ const store: StoreOptions<AppState> = {
         },
         setBookmarks(state, bookmarks) {
             state.bookmarks = bookmarks;
+        },
+        setBookmarkMode(state, value){
+            state.bookmarkMode = value;
         }
     },
     actions: {

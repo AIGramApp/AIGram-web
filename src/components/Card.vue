@@ -28,10 +28,12 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { FeedItem } from "@/models";
-import { AppState } from '../store';
+import { AppState } from '@/store';
+import { mixins } from 'vue-class-component';
+import BaseComponent from '@/BaseComponent';
 
 @Component
-export default class Card extends Vue {
+export default class Card extends mixins(BaseComponent) {
     @Prop()
     item!: FeedItem;
 
@@ -42,10 +44,6 @@ export default class Card extends Vue {
     get isBookmarked()
     {
         return this.state.bookmarks.includes(this.item.link);
-    }
-    get state()
-    {
-        return this.$store.state as AppState;
     }
 }
 </script>
