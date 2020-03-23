@@ -2,7 +2,7 @@
     <div class="max-w-md my-8 rounded overflow-hidden shadow-lg m-auto">
         <a class="px-3 float-right" @click="bookmark" :class="{'text-gray-500': isBookmarked}">
             <svg
-                class="w-5 h-5"
+                class="w-5 fill-current h-5"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
             >
@@ -28,6 +28,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { FeedItem } from "@/models";
+import { AppState } from '../store';
 
 @Component
 export default class Card extends Vue {
@@ -36,11 +37,15 @@ export default class Card extends Vue {
 
     bookmark()
     {
-
+        this.$emit("bookmark", this.item);
     }
     get isBookmarked()
     {
-        return false;
+        return this.state.bookmarks.includes(this.item.link);
+    }
+    get state()
+    {
+        return this.$store.state as AppState;
     }
 }
 </script>

@@ -81,11 +81,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import feedData from "@/feed.json";
 import { AppState } from "./store";
-
 @Component({})
 export default class App extends Vue {
     mounted() {
         this.$store.commit("setFeed", feedData);
+        this.$store.dispatch("loadBookmarks");
     }
     get state() {
         return this.$store.state as AppState;

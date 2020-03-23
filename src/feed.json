@@ -3,12 +3,12 @@
     "title": "Tensorflow framework",
     "tags": ["framework"],
     "description": "Tensorflow - end-to-end platform for machine-learning",
-    "link": "http://tensorflow4.org/"
+    "link": "https://tensorflow.org"
 },
 {
     "image": "https://paperswithcode.com/static/index.jpeg",
     "title": "Papers with code",
     "tags": ["research", "code"],
     "description": "Latest AI and Ml related state-of-the-art research papers with code provided",
-    "link": "https://paperswithcode.com/"
+    "link": "https://paperswithcode.com"
 }]

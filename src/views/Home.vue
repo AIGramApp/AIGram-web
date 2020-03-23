@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto px-5 my-20">
         <template v-if="feed.length > 0">
-            <card v-for="item in feed" :item="item" :key="item.link"></card>
+            <card v-for="item in feed" :item="item" :key="item.link" @bookmark="setBookmark"></card>
         </template>
         <template v-if="feed.length == 0">
             <div class="max-w-md my-8 rounded overflow-hidden shadow-lg m-auto">
@@ -19,11 +19,27 @@ import { Component, Vue } from "vue-property-decorator";
 import { State } from "vuex-class";
 import Card from "@/components/Card.vue";
 import { FeedItem } from "../models";
+import { AppState } from "@/store";
 @Component({
     components: { Card }
 })
 export default class Home extends Vue {
     @State
     feed!: Array<FeedItem>;
+
+    setBookmark(item: FeedItem) {
+        let bookmarks = this.state.bookmarks;
+        if (bookmarks.includes(item.link)) {
+            //Remove the element
+            bookmarks = bookmarks.filter(i => i != item.link);
+        } else {
+            bookmarks.push(item.link);
+        }
+        this.$store.commit("setBookmarks", bookmarks);
+        this.$store.dispatch("saveBookmarks");
+    }
+    get state() {
+        return this.$store.state as AppState;
+    }
 }
 </script>
