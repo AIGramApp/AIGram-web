@@ -7,7 +7,7 @@
                 <div class="flex items-center -mx-6">
                     <div class="lg:w-1/4 xl:w-1/5 pl-6 pr-6">
                         <div class="flex items-center">
-                            <a href="/" class="block">AIGram</a>
+                            <a href="/" class="block font-bold">AIGram</a>
                         </div>
                     </div>
 
@@ -47,9 +47,7 @@
                             </div>
                         </div>
 
-                        <div
-                            class="flex items-center justify-between w-1/4 px-6"
-                        >
+                        <div class="flex items-center justify-between w-1/4 px-6">
                             <div class="flex justify-start items-center text-gray-500">
                                 <a
                                     class="block flex items-center hover:text-gray-700 mr-5"
@@ -83,3 +81,8 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class App extends Vue {}
 </script>
+<style lang="css">
+body{
+    font-family: 'Roboto Mono', monospace;
+}
+</style>
