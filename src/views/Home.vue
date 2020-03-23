@@ -6,14 +6,14 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
+import {State} from 'vuex-class'
 import Card from '@/components/Card.vue'
 import { FeedItem } from '../models';
-import feedData from '@/feed.json'
 @Component({
     components: {Card}
 })
 export default class Home extends Vue{
-    
-    feed = feedData;
+    @State
+    feed!: Array<FeedItem>;
 }
 </script>

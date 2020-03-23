@@ -1,7 +1,14 @@
 [{
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/1200px-TensorFlowLogo.svg.png",
-    "title": "Tensorflow framework released",
+    "title": "Tensorflow framework",
     "tags": ["framework"],
-    "description": "A new version of the popular framework is released.",
+    "description": "Tensorflow - end-to-end platform for machine-learning",
     "link": "http://tensorflow4.org/"
+},
+{
+    "image": "https://paperswithcode.com/static/index.jpeg",
+    "title": "Papers with code",
+    "tags": ["research", "code"],
+    "description": "Latest AI and Ml related state-of-the-art research papers with code provided",
+    "link": "https://paperswithcode.com/"
 }]

@@ -28,7 +28,9 @@
                                         aria-expanded="false"
                                         aria-label="search input"
                                         dir="auto"
+                                        v-model="search"
                                         style="position: relative; vertical-align: top;"
+                                        @input="updateSearch"
                                     />
                                 </span>
                                 <div
@@ -77,12 +79,44 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import feedData from "@/feed.json";
+import { AppState } from "./store";
 
 @Component({})
-export default class App extends Vue {}
+export default class App extends Vue {
+    mounted() {
+        this.$store.commit("setFeed", feedData);
+    }
+    get state() {
+        return this.$store.state as AppState;
+    }
+    get search() {
+        return this.state.search;
+    }
+    set search(value: string) {
+        this.$store.commit("setSearch", value);
+    }
+    updateSearch() {
+        if (this.search == "") {
+            this.$store.commit("setFeed", feedData);
+        } else {
+            const foundItems = feedData.filter(item => {
+                return (
+                    item.title
+                        .toLowerCase()
+                        .includes(this.search.toLowerCase()) ||
+                    item.description
+                        .toLowerCase()
+                        .includes(this.search.toLowerCase())
+                );
+            });
+            this.$store.commit("setFeed", foundItems);
+        }
+    }
+}
 </script>
 <style lang="css">
-body{
-    font-family: 'Roboto Mono', monospace;
+body {
+    font-family: "Roboto Mono", monospace;
 }
 </style>
