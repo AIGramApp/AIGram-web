@@ -16,6 +16,9 @@ export default class Auth extends mixins(BaseComponent) {
                 state,
                 code
             })
+            .then(() => {
+                this.$store.dispatch("loadUser");
+            })
             .finally(() => {
                 this.$router.push({ name: "home" });
             });

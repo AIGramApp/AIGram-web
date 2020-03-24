@@ -34,4 +34,12 @@ export default class BaseComponent extends Vue {
     set feed(value: Array<FeedItem>) {
         this.$store.commit("setFeed", value);
     }
+    get hasUser()
+    {
+        return this.state.user != null;
+    }
+    get user()
+    {
+        return this.state.user!;
+    }
 }

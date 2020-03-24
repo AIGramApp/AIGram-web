@@ -54,9 +54,12 @@
                                 <a
                                     class="block flex items-center mr-5 text-gray-700 cursor-pointer"
                                     @click="auth()"
+                                    v-if="!hasUser"
                                 >
                                     Login/Register
                                 </a>
+                                <account-dropdown @logout="logout" v-if="hasUser"></account-dropdown>
+                                
                                 <a
                                     class="block flex items-center mr-5 cursor-pointer"
                                     :class="{'text-gray-700': bookmarkMode}"
@@ -92,12 +95,16 @@ import { AppState } from "./store";
 import { mixins } from 'vue-class-component';
 import BaseComponent from '@/BaseComponent'
 import { v4 as uuidv4 } from "uuid";
+import AccountDropdown from '@/components/AccountDropdown.vue'
 
-@Component({})
+@Component({
+    components: {AccountDropdown}
+})
 export default class App extends mixins(BaseComponent) {
     mounted() {
         this.feed = feedData;
         this.$store.dispatch("loadBookmarks");
+        this.$store.dispatch("loadUser");
     }
     updateSearch() {
         if (this.search == "") {
@@ -120,6 +127,10 @@ export default class App extends mixins(BaseComponent) {
     {
         let state = uuidv4();
         window.location.href = `https://github.com/login/oauth/authorize?client_id=7f717d3d84f0c342fdce&scope=read:user,user:email&state=${state}`;
+    }
+    logout()
+    {
+        this.$store.dispatch("logout");
     }
 }
 </script>
