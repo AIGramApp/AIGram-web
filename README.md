@@ -107,6 +107,7 @@ For the first stage, the data is located in the ***src/feed.json*** file. To add
     "tags": ["some-tag", "framework"]
 }
 ```
+Note: Add the data from the top, so the feed displays the latest data.
 For now, the repo needs to be forked, a new link added and then a pull request should be opened. This will be fixed in the Second stage.
 
 <!-- ROADMAP -->
