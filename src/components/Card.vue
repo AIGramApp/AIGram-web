@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-md my-8 rounded overflow-hidden shadow-lg m-auto">
-        <a class="px-3 float-right" @click="bookmark" :class="{'text-gray-500': isBookmarked}">
+        <a class="px-3 pb-3 float-right" @click="bookmark" :class="{'text-gray-500': isBookmarked}">
             <svg
                 class="w-5 fill-current h-5"
                 xmlns="http://www.w3.org/2000/svg"

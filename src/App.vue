@@ -87,12 +87,12 @@ import BaseComponent from '@/BaseComponent'
 @Component({})
 export default class App extends mixins(BaseComponent) {
     mounted() {
-        this.$store.commit("setFeed", feedData);
+        this.feed = feedData;
         this.$store.dispatch("loadBookmarks");
     }
     updateSearch() {
         if (this.search == "") {
-            this.$store.commit("setFeed", feedData);
+            this.feed = feedData;
         } else {
             const foundItems = feedData.filter(item => {
                 return (
@@ -104,7 +104,7 @@ export default class App extends mixins(BaseComponent) {
                         .includes(this.search.toLowerCase())
                 );
             });
-            this.$store.commit("setFeed", foundItems);
+            this.feed = foundItems;
         }
     }
 }
