@@ -55,11 +55,9 @@
                                     class="block flex items-center mr-5 text-gray-700 cursor-pointer"
                                     @click="auth()"
                                     v-if="!hasUser"
-                                >
-                                    Login/Register
-                                </a>
+                                >Login/Register</a>
                                 <account-dropdown @logout="logout" v-if="hasUser"></account-dropdown>
-                                
+
                                 <a
                                     class="block flex items-center mr-5 cursor-pointer"
                                     :class="{'text-gray-700': bookmarkMode}"
@@ -76,7 +74,6 @@
                                         />
                                     </svg>
                                 </a>
-                                
                             </div>
                         </div>
                     </div>
@@ -85,6 +82,31 @@
         </div>
 
         <router-view></router-view>
+
+        <div
+            class="flex bg-white border-b border-gray-200 fixed bottom-0 inset-x-0 z-100 h-16 items-center"
+        >
+            <div class="w-full max-w-screen-xl relative mx-auto px-6">
+                <div class="flex justify-between">
+                    <div class="pl-6 m-auto pr-6">
+                        <router-link to="/" class="block text-center font-bold">
+                            <svg
+                                class="fill-current w-4 h-4 m-auto"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                            >
+                                <path
+                                    d="M392.533,187.733H221.867V17.067C221.867,7.641,214.226,0,204.8,0s-17.067,7.641-17.067,17.067v170.667H17.067
+			C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h170.667v170.667c0,9.426,7.641,17.067,17.067,17.067
+			s17.067-7.641,17.067-17.067V221.867h170.667c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z"
+                                />
+                            </svg>
+                            <span>Publish</span>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -92,13 +114,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import feedData from "@/feed.json";
 import { AppState } from "./store";
-import { mixins } from 'vue-class-component';
-import BaseComponent from '@/BaseComponent'
+import { mixins } from "vue-class-component";
+import BaseComponent from "@/BaseComponent";
 import { v4 as uuidv4 } from "uuid";
-import AccountDropdown from '@/components/AccountDropdown.vue'
+import AccountDropdown from "@/components/AccountDropdown.vue";
 
 @Component({
-    components: {AccountDropdown}
+    components: { AccountDropdown }
 })
 export default class App extends mixins(BaseComponent) {
     mounted() {
@@ -123,13 +145,11 @@ export default class App extends mixins(BaseComponent) {
             this.feed = foundItems;
         }
     }
-    auth()
-    {
+    auth() {
         let state = uuidv4();
         window.location.href = `https://github.com/login/oauth/authorize?client_id=7f717d3d84f0c342fdce&scope=read:user,user:email&state=${state}`;
     }
-    logout()
-    {
+    logout() {
         this.$store.dispatch("logout");
     }
 }
