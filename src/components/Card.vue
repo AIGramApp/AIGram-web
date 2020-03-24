@@ -10,7 +10,7 @@
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
             </svg>
         </a>
-        <img class="w-full" :src="item.image" alt="Tensorflow framework" />
+        <img class="w-full" :src="item.image" :alt="item.title" v-if="item.image"/>
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{item.title}}</div>
             <p class="text-gray-700 text-base">{{item.description}}</p>
