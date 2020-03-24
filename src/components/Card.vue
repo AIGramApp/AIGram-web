@@ -10,7 +10,9 @@
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
             </svg>
         </a>
-        <img class="w-full" :src="item.image" :alt="item.title" v-if="item.image"/>
+        <a :href="item.link" target="_blank">
+            <img class="w-full" :src="item.image" :alt="item.title" />
+        </a>
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{item.title}}</div>
             <p class="text-gray-700 text-base">{{item.description}}</p>
@@ -28,21 +30,19 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { FeedItem } from "@/models";
-import { AppState } from '@/store';
-import { mixins } from 'vue-class-component';
-import BaseComponent from '@/BaseComponent';
+import { AppState } from "@/store";
+import { mixins } from "vue-class-component";
+import BaseComponent from "@/BaseComponent";
 
 @Component
 export default class Card extends mixins(BaseComponent) {
     @Prop()
     item!: FeedItem;
 
-    bookmark()
-    {
+    bookmark() {
         this.$emit("bookmark", this.item);
     }
-    get isBookmarked()
-    {
+    get isBookmarked() {
         return this.state.bookmarks.includes(this.item.link);
     }
 }
