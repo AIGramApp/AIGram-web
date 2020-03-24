@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/paladium/aigram">
+  <a href="https://github.com/AIGramApp/AIGram-web">
     <img src="./images/logo.png" alt="Logo" width="200" height="200">
   </a>
 
@@ -13,9 +13,9 @@
     <br />
     <a href="https://wonderful-visvesvaraya-7dfbae.netlify.com">View Demo</a>
     ·
-    <a href="https://github.com/paladium/aigram/issues">Report Bug</a>
+    <a href="https://github.com/AIGramApp/AIGram-web/issues">Report Bug</a>
     ·
-    <a href="https://github.com/paladium/aigram/issues">Request Feature</a>
+    <a href="https://github.com/AIGramApp/AIGram-web/issues">Request Feature</a>
   </p>
 </p>
 
@@ -69,7 +69,7 @@ npm install npm@latest -g
  
 1. Clone the repo
 ```sh
-git clone https://github.com/paladium/aigram.git
+git clone https://github.com/AIGramApp/AIGram-web.git
 ```
 2. Install NPM packages
 ```sh
@@ -113,7 +113,7 @@ For now, the repo needs to be forked, a new link added and then a pull request s
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/paladium/aigram/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/AIGramApp/AIGram-web/issues) for a list of proposed features (and known issues).
 
 The project will include lots of features in next stages.
 
@@ -152,7 +152,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Ilkin Musayev - [@real_paladium](https://twitter.com/real_paladium) - musaevilkin29@gmail.com
 
-Project Link: [https://github.com/paladium/aigram](https://github.com/paladium/aigram)
+Project Link: [https://github.com/AIGramApp/AIGram-web](https://github.com/AIGramApp/AIGram-web)
 
 
 
