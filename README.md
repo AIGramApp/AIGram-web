@@ -30,6 +30,7 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+* [How to add data](#how-to-add-data)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -122,7 +123,9 @@ The project will include lots of features in next stages.
 
 ### Third stage:
 - [ ] Mobile application written in Flutter
-- [ ] 
+- [ ] Registration for users (using github)
+- [ ] Profiles for different users
+- [ ] Comments
 
 
 <!-- CONTRIBUTING -->
