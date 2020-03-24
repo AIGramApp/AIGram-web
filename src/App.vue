@@ -52,7 +52,13 @@
                         <div class="flex items-center justify-between w-1/4 px-6">
                             <div class="flex justify-start items-center">
                                 <a
-                                    class="block flex items-center mr-5"
+                                    class="block flex items-center mr-5 text-gray-700 cursor-pointer"
+                                    @click="auth()"
+                                >
+                                    Login/Register
+                                </a>
+                                <a
+                                    class="block flex items-center mr-5 cursor-pointer"
                                     :class="{'text-gray-700': bookmarkMode}"
                                     @click="bookmarkMode = !bookmarkMode"
                                 >
@@ -67,6 +73,7 @@
                                         />
                                     </svg>
                                 </a>
+                                
                             </div>
                         </div>
                     </div>
@@ -84,6 +91,8 @@ import feedData from "@/feed.json";
 import { AppState } from "./store";
 import { mixins } from 'vue-class-component';
 import BaseComponent from '@/BaseComponent'
+import { v4 as uuidv4 } from "uuid";
+
 @Component({})
 export default class App extends mixins(BaseComponent) {
     mounted() {
@@ -106,6 +115,11 @@ export default class App extends mixins(BaseComponent) {
             });
             this.feed = foundItems;
         }
+    }
+    auth()
+    {
+        let state = uuidv4();
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=7f717d3d84f0c342fdce&scope=read:user,user:email&state=${state}`;
     }
 }
 </script>

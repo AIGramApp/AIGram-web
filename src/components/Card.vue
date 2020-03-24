@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { FeedItem } from "@/models";
+import { FeedItem } from "@/api/models";
 import { AppState } from "@/store";
 import { mixins } from "vue-class-component";
 import BaseComponent from "@/BaseComponent";

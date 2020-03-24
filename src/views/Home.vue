@@ -23,7 +23,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { State } from "vuex-class";
 import Card from "@/components/Card.vue";
-import { FeedItem } from "@/models";
+import { FeedItem } from "@/api/models";
 import { AppState } from "@/store";
 import { mixins } from 'vue-class-component';
 import BaseComponent from '@/BaseComponent';

@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { AppState } from './store';
-import { FeedItem } from './models';
+import { FeedItem } from '@/api/models';
 import feedData from "@/feed.json";
 
 
