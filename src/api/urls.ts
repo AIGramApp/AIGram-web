@@ -13,7 +13,8 @@ const urls = {
     },
     posts: {
         base: "posts",
-        upload: "upload"
+        upload: "upload",
+        publish: "publish"
     }
 };
 export default urls;

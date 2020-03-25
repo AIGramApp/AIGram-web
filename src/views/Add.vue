@@ -4,7 +4,7 @@
             <file-uploader @fileAdded="fileAdded"></file-uploader>
         </template>
         <template v-if="stage == 2">
-            <new-post></new-post>
+            <new-post @submit="submit"></new-post>
         </template>
     </div>
 </template>
@@ -41,6 +41,12 @@ export default class Add extends mixins(BaseComponent) {
     }
     set stage(value: AddPostStage) {
         this.$store.commit("setNewPostStage", value);
+    }
+    submit()
+    {
+        this.$store.dispatch("publishPost").then(() => {
+            this.$router.push({name: 'home'});
+        });
     }
 }
 </script>

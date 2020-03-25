@@ -39,16 +39,16 @@ const store: StoreOptions<AppState> = {
         setBookmarks(state, bookmarks) {
             state.bookmarks = bookmarks;
         },
-        setBookmarkMode(state, value){
+        setBookmarkMode(state, value) {
             state.bookmarkMode = value;
         },
         setUser(state, user) {
             state.user = user;
         },
-        setNewPostStage(state, stage){
+        setNewPostStage(state, stage) {
             state.newPostStage = stage;
         },
-        setNewPost(state, post){
+        setNewPost(state, post) {
             state.newPost = post;
         }
     },
@@ -75,10 +75,13 @@ const store: StoreOptions<AppState> = {
                 return commit("setUser", null);
             }).catch((e) => { throw e.response.data; });
         },
-        uploadImage({state, commit}, file: File){
+        uploadImage({ state, commit }, file: File) {
             const formData = new FormData();
             formData.append("image", file);
-            return Axios.post(join(base, urls.posts.base, urls.posts.upload), formData).then(response => response.data.filename).catch((e) => {throw e.response.data;});
+            return Axios.post(join(base, urls.posts.base, urls.posts.upload), formData).then(response => response.data.filename).catch((e) => { throw e.response.data; });
+        },
+        publishPost({ state, commit }) {
+            return Axios.post(join(base, urls.posts.base, urls.posts.publish), state.newPost).then(response => response.data).catch(e => { throw e.response.data; });
         }
     },
 };
