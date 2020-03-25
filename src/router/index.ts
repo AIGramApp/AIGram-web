@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import Auth from '@/views/Auth.vue';
 import Add from '@/views/Add.vue';
 import store from '@/store';
+import Profile from '@/views/Profile.vue';
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes = [
         meta: {
             requiresAuth: true
         }
+    },
+    {
+        path: '/profile/:id',
+        name: 'profile',
+        component: Profile
     }
 ];
 

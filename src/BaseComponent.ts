@@ -41,4 +41,15 @@ export default class BaseComponent extends Vue {
     {
         return this.state.user!;
     }
+    setBookmark(item: FeedItem) {
+        let bookmarks = this.state.bookmarks;
+        if (bookmarks.includes(item.id)) {
+            //Remove the element
+            bookmarks = bookmarks.filter(i => i != item.id);
+        } else {
+            bookmarks.push(item.id);
+        }
+        this.$store.commit("setBookmarks", bookmarks);
+        this.$store.dispatch("saveBookmarks");
+    }
 }

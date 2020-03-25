@@ -17,6 +17,8 @@ export interface AppState {
     newPostStage: AddPostStage;
 
     newPost: FeedItem | null;
+
+    profile: User | null;
 }
 
 const store: StoreOptions<AppState> = {
@@ -27,7 +29,8 @@ const store: StoreOptions<AppState> = {
         bookmarkMode: false,
         user: null,
         newPostStage: AddPostStage.Image,
-        newPost: null
+        newPost: null,
+        profile: null
     },
     mutations: {
         setFeed(state, feed) {
@@ -50,6 +53,9 @@ const store: StoreOptions<AppState> = {
         },
         setNewPost(state, post) {
             state.newPost = post;
+        },
+        setProfile(state, profile){
+            state.profile = profile;
         }
     },
     actions: {
@@ -87,6 +93,11 @@ const store: StoreOptions<AppState> = {
             return Axios.get(join(base, urls.feed.base)).then(response => response.data).then(feed => {
                 commit("setFeed", feed);
             });
+        },
+        loadProfile({state, commit}, id){
+            return Axios.get(join(base, urls.user.profile, String(id))).then(response => response.data).then(user => {
+                commit("setProfile", user);
+            }).catch((e) => {throw e.response.data;});
         }
     },
 };

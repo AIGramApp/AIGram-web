@@ -35,17 +35,5 @@ export default class Home extends mixins(BaseComponent) {
     mounted(){
         this.$store.dispatch("feed");
     }
-
-    setBookmark(item: FeedItem) {
-        let bookmarks = this.state.bookmarks;
-        if (bookmarks.includes(item.id)) {
-            //Remove the element
-            bookmarks = bookmarks.filter(i => i != item.id);
-        } else {
-            bookmarks.push(item.id);
-        }
-        this.$store.commit("setBookmarks", bookmarks);
-        this.$store.dispatch("saveBookmarks");
-    }
 }
 </script>

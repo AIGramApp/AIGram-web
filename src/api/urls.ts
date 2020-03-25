@@ -9,7 +9,8 @@ const urls = {
     },
     user: {
         base: "user",
-        logout: "logout"
+        logout: "logout",
+        profile: "profile"
     },
     posts: {
         base: "posts",

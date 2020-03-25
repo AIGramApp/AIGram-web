@@ -4,7 +4,7 @@
       <img class="h-full w-full object-cover" :src="user.avatar" :alt="user.name">
     </button>
     <div v-if="dropdown" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
-      <router-link to="/profile" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Profile</router-link>
+      <router-link :to="'/profile/' + user.id" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Profile</router-link>
       <a @click="$emit('logout')" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Logout</a>
     </div>
   </div>
