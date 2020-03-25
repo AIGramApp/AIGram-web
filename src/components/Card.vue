@@ -10,6 +10,18 @@
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
             </svg>
         </a>
+        <div class="flex items-center px-6 py-4">
+            <img
+                class="w-8 h-8 rounded-full mr-4"
+                :src="item.user.avatar"
+                :alt="item.user.username"
+            />
+            <div class="text-sm">
+                <p class="text-gray-900 leading-none">@{{item.user.username}}</p>
+                <p class="text-gray-600">{{item.date | formatDate}}</p>
+            </div>
+        </div>
+
         <a :href="item.link" target="_blank">
             <img class="w-full" :src="item.image" :alt="item.title" />
         </a>

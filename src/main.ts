@@ -5,6 +5,7 @@ import store from './store';
 import Axios from 'axios';
 import { v4 as uuid } from 'uuid'
 import Cookies from 'js-cookie'
+import moment from 'moment'
 
 Vue.config.productionTip = false;
 
@@ -22,6 +23,10 @@ Axios.interceptors.request.use((config) => {
     return config;
 }, (error) => {
     return Promise.reject(error);
+});
+
+Vue.filter('formatDate', (value: string) => {
+    return moment(value).format('MMM Do');
 });
 
 new Vue({
