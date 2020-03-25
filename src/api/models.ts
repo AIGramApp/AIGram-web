@@ -28,3 +28,8 @@ export enum AddPostStage
     Image = 1,
     Meta = 2
 }
+export interface UserProfile
+{
+    user: User;
+    posts: Array<FeedItem>;
+}

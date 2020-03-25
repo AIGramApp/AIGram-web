@@ -15,6 +15,7 @@ export default class BaseComponent extends Vue {
         this.$store.commit("setSearch", value);
     }
     set bookmarkMode(value: boolean) {
+        this.$router.push({name: 'home'});
         this.$store.commit("setBookmarkMode", value);
         if (this.bookmarkMode) {
             //Only show bookmarked items

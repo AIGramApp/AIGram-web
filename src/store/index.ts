@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
-import { FeedItem, User, GithubAuth, AddPostStage } from '@/api/models';
+import { FeedItem, User, GithubAuth, AddPostStage, UserProfile } from '@/api/models';
 import Axios from 'axios'
 import urls, { join, base } from '@/api/urls';
 Vue.use(Vuex);
@@ -18,7 +18,7 @@ export interface AppState {
 
     newPost: FeedItem | null;
 
-    profile: User | null;
+    profile: UserProfile | null;
 }
 
 const store: StoreOptions<AppState> = {
@@ -95,8 +95,8 @@ const store: StoreOptions<AppState> = {
             });
         },
         loadProfile({state, commit}, id){
-            return Axios.get(join(base, urls.user.profile, String(id))).then(response => response.data).then(user => {
-                commit("setProfile", user);
+            return Axios.get(join(base, urls.user.profile, String(id))).then(response => response.data).then(profile => {
+                commit("setProfile", profile);
             }).catch((e) => {throw e.response.data;});
         }
     },

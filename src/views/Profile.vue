@@ -3,17 +3,17 @@
         <div class="max-w-md my-8  m-auto">
             <a
                 class="flex items-center px-6 py-4 shadow-lg rounded overflow-hidden"
-                :href="'https://github.com/' + profile.username"
+                :href="'https://github.com/' + profile.user.username"
                 target="_blank"
             >
                 <img
                     class="w-8 h-8 rounded-full mr-4"
-                    :src="profile.avatar"
-                    :alt="profile.username"
+                    :src="profile.user.avatar"
+                    :alt="profile.user.username"
                 />
                 <div class="text-sm">
-                    <p class="text-gray-900 leading-none">@{{profile.username}}</p>
-                    <p class="text-gray-600">{{profile.name}}</p>
+                    <p class="text-gray-900 leading-none">@{{profile.user.username}}</p>
+                    <p class="text-gray-600">{{profile.user.name}}</p>
                 </div>
             </a>
 
