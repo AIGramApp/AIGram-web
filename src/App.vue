@@ -112,7 +112,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import feedData from "@/feed.json";
 import { AppState } from "./store";
 import { mixins } from "vue-class-component";
 import BaseComponent from "@/BaseComponent";
@@ -128,21 +127,20 @@ export default class App extends mixins(BaseComponent) {
         this.$store.dispatch("loadUser");
     }
     updateSearch() {
-        // if (this.search == "") {
-        //     this.feed = feedData;
-        // } else {
-        //     const foundItems = feedData.filter(item => {
-        //         return (
-        //             item.title
-        //                 .toLowerCase()
-        //                 .includes(this.search.toLowerCase()) ||
-        //             item.description
-        //                 .toLowerCase()
-        //                 .includes(this.search.toLowerCase())
-        //         );
-        //     });
-        //     this.feed = foundItems;
-        // }
+        if (this.search == "") {
+            this.$store.dispatch("feed");
+        } else {
+            this.feed = this.feed.filter(item => {
+                return (
+                    item.title
+                        .toLowerCase()
+                        .includes(this.search.toLowerCase()) ||
+                    item.description
+                        .toLowerCase()
+                        .includes(this.search.toLowerCase())
+                );
+            });
+        }
     }
     auth() {
         let state = uuidv4();
