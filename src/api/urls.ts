@@ -11,5 +11,9 @@ const urls = {
         base: "user",
         logout: "logout"
     },
+    posts: {
+        base: "posts",
+        upload: "upload"
+    }
 };
 export default urls;

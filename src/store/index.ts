@@ -64,7 +64,11 @@ const store: StoreOptions<AppState> = {
                 return commit("setUser", null);
             }).catch((e) => { throw e.response.data; });
         },
-
+        uploadImage({state, commit}, file: File){
+            const formData = new FormData();
+            formData.append("image", file);
+            return Axios.post(join(base, urls.posts.base, urls.posts.upload), formData).then(response => response.data).catch((e) => {throw e.response.data;});
+        }
     },
 };
 

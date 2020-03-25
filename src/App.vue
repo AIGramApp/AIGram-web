@@ -89,7 +89,7 @@
             <div class="w-full max-w-screen-xl relative mx-auto px-6">
                 <div class="flex justify-between">
                     <div class="pl-6 m-auto pr-6">
-                        <router-link to="/" class="block text-center font-bold">
+                        <a @click="add" class="block text-center font-bold cursor-pointer">
                             <svg
                                 class="fill-current w-4 h-4 m-auto"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@
                                 />
                             </svg>
                             <span>Publish</span>
-                        </router-link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -151,6 +151,17 @@ export default class App extends mixins(BaseComponent) {
     }
     logout() {
         this.$store.dispatch("logout");
+    }
+    add()
+    {
+        if(this.hasUser)
+        {
+            this.$router.push({name: 'add'});
+        }
+        else
+        {
+            this.auth();
+        }
     }
 }
 </script>

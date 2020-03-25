@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 import Auth from '@/views/Auth.vue';
+import Add from '@/views/Add.vue';
 import store from '@/store';
 
 Vue.use(VueRouter);
@@ -16,6 +17,14 @@ const routes = [
         path: '/auth',
         name: 'auth',
         component: Auth
+    },
+    {
+        path: '/add',
+        name: 'add',
+        component: Add,
+        meta: {
+            requiresAuth: true
+        }
     }
 ];
 
