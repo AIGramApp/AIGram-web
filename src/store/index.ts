@@ -82,6 +82,11 @@ const store: StoreOptions<AppState> = {
         },
         publishPost({ state, commit }) {
             return Axios.post(join(base, urls.posts.base, urls.posts.publish), state.newPost).then(response => response.data).catch(e => { throw e.response.data; });
+        },
+        feed({state, commit}){
+            return Axios.get(join(base, urls.feed.base)).then(response => response.data).then(feed => {
+                commit("setFeed", feed);
+            });
         }
     },
 };

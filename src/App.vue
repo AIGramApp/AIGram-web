@@ -124,26 +124,25 @@ import AccountDropdown from "@/components/AccountDropdown.vue";
 })
 export default class App extends mixins(BaseComponent) {
     mounted() {
-        this.feed = feedData;
         this.$store.dispatch("loadBookmarks");
         this.$store.dispatch("loadUser");
     }
     updateSearch() {
-        if (this.search == "") {
-            this.feed = feedData;
-        } else {
-            const foundItems = feedData.filter(item => {
-                return (
-                    item.title
-                        .toLowerCase()
-                        .includes(this.search.toLowerCase()) ||
-                    item.description
-                        .toLowerCase()
-                        .includes(this.search.toLowerCase())
-                );
-            });
-            this.feed = foundItems;
-        }
+        // if (this.search == "") {
+        //     this.feed = feedData;
+        // } else {
+        //     const foundItems = feedData.filter(item => {
+        //         return (
+        //             item.title
+        //                 .toLowerCase()
+        //                 .includes(this.search.toLowerCase()) ||
+        //             item.description
+        //                 .toLowerCase()
+        //                 .includes(this.search.toLowerCase())
+        //         );
+        //     });
+        //     this.feed = foundItems;
+        // }
     }
     auth() {
         let state = uuidv4();

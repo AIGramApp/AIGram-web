@@ -16,14 +16,15 @@ export default class BaseComponent extends Vue {
         this.$store.commit("setSearch", value);
     }
     set bookmarkMode(value: boolean) {
-        this.$store.commit("setBookmarkMode", value);
-        if (this.bookmarkMode) {
-            //Only show bookmarked items
-            this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.link));
-        }
-        else{
-            this.feed = feedData;
-        }
+        // TODO bookmarks
+        // this.$store.commit("setBookmarkMode", value);
+        // if (this.bookmarkMode) {
+        //     //Only show bookmarked items
+        //     this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.link));
+        // }
+        // else{
+        //     this.feed = feedData;
+        // }
     }
     get bookmarkMode() {
         return this.state.bookmarkMode;

@@ -15,6 +15,9 @@ const urls = {
         base: "posts",
         upload: "upload",
         publish: "publish"
+    },
+    feed: {
+        base: "feed"
     }
 };
 export default urls;

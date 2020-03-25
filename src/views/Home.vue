@@ -32,6 +32,10 @@ import BaseComponent from '@/BaseComponent';
 })
 export default class Home extends mixins(BaseComponent) {
 
+    mounted(){
+        this.$store.dispatch("feed");
+    }
+
     setBookmark(item: FeedItem) {
         let bookmarks = this.state.bookmarks;
         if (bookmarks.includes(item.link)) {

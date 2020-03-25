@@ -6,8 +6,6 @@ import Axios from 'axios';
 import { v4 as uuid } from 'uuid'
 import Cookies from 'js-cookie'
 
-
-
 Vue.config.productionTip = false;
 
 const safeMethods = ["GET", "HEAD", "TRACE", "OPTIONS"];

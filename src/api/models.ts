@@ -5,6 +5,7 @@ export interface FeedItem
     title: string;
     description: string;
     link: string;
+    user: User;
 }
 
 export interface User
