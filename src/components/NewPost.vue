@@ -5,28 +5,34 @@
 
             <div class="px-6 py-4">
                 <input
-                    class="font-bold text-xl mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
+                    class="text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
                     v-model="item.title"
-                    placeholder="Short title"
+                    placeholder="Title"
                 />
                 <input
-                    class="font-bold text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
+                    class="text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
                     v-model="item.description"
-                    placeholder="Short summary"
+                    placeholder="Summary"
                 />
                 <input
-                    class="font-bold text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
+                    class="text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
                     v-model="item.link"
                     placeholder="Link"
+                    type="link"
+                />
+                <vue-tags-input
+                    @tags-changed="tagsChanged"
+                    v-model="tag"
+                    :tags="tags"
+                    placeholder="Tags"
+                    :max-tags="5"
+                    class="text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
                 />
             </div>
-            <div class="px-6 py-4">
-                <span
-                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-                    v-for="tag in item.tags"
-                    :key="tag"
-                >#{{tag}}</span>
-            </div>
+            <button
+                class="bg-blue-500 hover:bg-blue-700 block w-full text-white font-bold py-2 px-4"
+                @click="submit"
+            >Publish</button>
         </div>
     </div>
 </template>
@@ -34,11 +40,26 @@
 import Vue from "vue";
 import Component, { mixins } from "vue-class-component";
 import BaseComponent from "../BaseComponent";
-
-@Component
+import VueTagsInput from "@johmun/vue-tags-input";
+@Component({
+    components: { VueTagsInput }
+})
 export default class NewPost extends mixins(BaseComponent) {
+    tag = "";
+    tags = [];
     get item() {
         return this.state.newPost!;
     }
+    tagsChanged(tags: Array<any>) {
+        this.item.tags = tags.map(t => t.text);
+    }
+    submit() {
+        this.$emit("submit");
+    }
 }
 </script>
+<style lang="css">
+.vue-tags-input .ti-input{
+    border: none !important;
+}
+</style>
