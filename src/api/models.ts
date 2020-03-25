@@ -19,3 +19,9 @@ export interface GithubAuth
     state: string;
     code: string;
 }
+
+export enum AddPostStage
+{
+    Image = 1,
+    Meta = 2
+}

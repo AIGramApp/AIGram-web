@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
-import { FeedItem, User, GithubAuth } from '@/api/models';
+import { FeedItem, User, GithubAuth, AddPostStage } from '@/api/models';
 import Axios from 'axios'
 import urls, { join, base } from '@/api/urls';
 Vue.use(Vuex);
@@ -14,6 +14,9 @@ export interface AppState {
     bookmarkMode: boolean;
     user: User | null;
 
+    newPostStage: AddPostStage;
+
+    newPost: FeedItem | null;
 }
 
 const store: StoreOptions<AppState> = {
@@ -22,7 +25,9 @@ const store: StoreOptions<AppState> = {
         search: "",
         bookmarks: [],
         bookmarkMode: false,
-        user: null
+        user: null,
+        newPostStage: AddPostStage.Image,
+        newPost: null
     },
     mutations: {
         setFeed(state, feed) {
@@ -40,6 +45,12 @@ const store: StoreOptions<AppState> = {
         setUser(state, user) {
             state.user = user;
         },
+        setNewPostStage(state, stage){
+            state.newPostStage = stage;
+        },
+        setNewPost(state, post){
+            state.newPost = post;
+        }
     },
     actions: {
         saveBookmarks({ state }) {
@@ -67,7 +78,7 @@ const store: StoreOptions<AppState> = {
         uploadImage({state, commit}, file: File){
             const formData = new FormData();
             formData.append("image", file);
-            return Axios.post(join(base, urls.posts.base, urls.posts.upload), formData).then(response => response.data).catch((e) => {throw e.response.data;});
+            return Axios.post(join(base, urls.posts.base, urls.posts.upload), formData).then(response => response.data.filename).catch((e) => {throw e.response.data;});
         }
     },
 };
