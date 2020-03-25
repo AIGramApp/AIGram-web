@@ -9,7 +9,7 @@ export interface AppState {
     feed: Array<FeedItem>;
     search: string;
 
-    bookmarks: string[];
+    bookmarks: number[];
 
     bookmarkMode: boolean;
     user: User | null;

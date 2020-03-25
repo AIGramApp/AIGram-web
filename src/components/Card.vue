@@ -55,7 +55,7 @@ export default class Card extends mixins(BaseComponent) {
         this.$emit("bookmark", this.item);
     }
     get isBookmarked() {
-        return this.state.bookmarks.includes(this.item.link);
+        return this.state.bookmarks.includes(this.item.id);
     }
 }
 </script>

@@ -38,11 +38,11 @@ export default class Home extends mixins(BaseComponent) {
 
     setBookmark(item: FeedItem) {
         let bookmarks = this.state.bookmarks;
-        if (bookmarks.includes(item.link)) {
+        if (bookmarks.includes(item.id)) {
             //Remove the element
-            bookmarks = bookmarks.filter(i => i != item.link);
+            bookmarks = bookmarks.filter(i => i != item.id);
         } else {
-            bookmarks.push(item.link);
+            bookmarks.push(item.id);
         }
         this.$store.commit("setBookmarks", bookmarks);
         this.$store.dispatch("saveBookmarks");

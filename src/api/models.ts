@@ -1,11 +1,13 @@
 export interface FeedItem
 {
+    id: number;
     image: string;
     tags: string[];
     title: string;
     description: string;
     link: string;
     user: User;
+    date: string;
 }
 
 export interface User

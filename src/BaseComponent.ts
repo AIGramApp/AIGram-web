@@ -18,7 +18,7 @@ export default class BaseComponent extends Vue {
         this.$store.commit("setBookmarkMode", value);
         if (this.bookmarkMode) {
             //Only show bookmarked items
-            this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.link));
+            this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.id));
         }
         else{
             this.$store.dispatch("feed");
