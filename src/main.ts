@@ -13,12 +13,10 @@ const safeMethods = ["GET", "HEAD", "TRACE", "OPTIONS"];
 let uid = uuid();
 Axios.interceptors.request.use((config) => {
     config.withCredentials = true;
-    if (safeMethods.indexOf(config.method!.toUpperCase()) == -1) {
-        config.headers["X-CSRF-TOKEN"] = uid;
-        Cookies.set("CSRF-TOKEN", uid, {
-            domain: process.env.VUE_APP_DOMAIN,
-            path: "/"
-        });
+    const token = Cookies.get("AIGRAM_TOKEN");
+    if(token)
+    {
+        config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
 }, (error) => {

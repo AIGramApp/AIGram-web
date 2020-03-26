@@ -3,6 +3,7 @@ import Vuex, { StoreOptions } from 'vuex';
 import { FeedItem, User, GithubAuth, AddPostStage, UserProfile } from '@/api/models';
 import Axios from 'axios'
 import urls, { join, base } from '@/api/urls';
+import Cookies from 'js-cookie';
 Vue.use(Vuex);
 
 export interface AppState {
@@ -69,7 +70,14 @@ const store: StoreOptions<AppState> = {
             }
         },
         auth({ state }, model: GithubAuth) {
-            return Axios.post(join(base, urls.auth.base), model).then(response => response.data).catch((e) => { throw e.response.data; });
+            return Axios.post(join(base, urls.auth.base), model).then(response => response.data.token).then(token => {
+                const expiry = new Date();
+                expiry.setHours(expiry.getHours() + 8);
+                Cookies.set("AIGRAM_TOKEN", token, {
+                    path: "/",
+                    expires: expiry
+                });
+            }).catch((e) => { throw e.response.data; });
         },
         loadUser({ state, commit }) {
             return Axios.get(join(base, urls.user.base)).then(response => response.data).then(user => {
@@ -77,9 +85,10 @@ const store: StoreOptions<AppState> = {
             }).catch((e) => { throw e.response.data; });
         },
         logout({ state, commit }) {
-            return Axios.post(join(base, urls.user.base, urls.user.logout)).then(response => response.data).then(() => {
-                return commit("setUser", null);
-            }).catch((e) => { throw e.response.data; });
+            Cookies.remove("AIGRAM_TOKEN", {
+                path: "/"
+            });
+            commit("setUser", null);
         },
         uploadImage({ state, commit }, file: File) {
             const formData = new FormData();
