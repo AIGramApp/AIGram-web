@@ -89,26 +89,18 @@ npm run build
 ## Usage
 
 The project will be developed in several stages. The first stage only includes frontend for the project. Currently the following features have been implemented:
-- [x] Loading of data from json
+- [x] Loading of data from api
 - [x] Display feed of data
 - [x] Bookmark items
 - [x] Display bookmarked items
 - [x] Search across the posts
-
+- [x] Login/register with Github
+- [x] Add posts via api
+- [x] User profiles
 
 ## How to add data
 
-For the first stage, the data is located in the ***src/feed.json*** file. To add a new link, use the following template:
-```json
-{
-    "image": "link to image url",
-    "title": "Title of the post",
-    "description": "Description of the post. Keep it short )",
-    "tags": ["some-tag", "framework"]
-}
-```
-Note: Add the data from the top, so the feed displays the latest data.
-For now, the repo needs to be forked, a new link added and then a pull request should be opened. This will be fixed in the Second stage.
+Visit the demo link and login with Github. Then press the +Publish button, upload the photo, fill out the information and the post will be created in a matter of seconds.
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -118,16 +110,16 @@ See the [open issues](https://github.com/AIGramApp/AIGram-web/issues) for a list
 The project will include lots of features in next stages.
 
 ### Second stage
-- [ ] Backend where new posts can be added along with the timestamp
+- [x] Backend where new posts can be added along with the timestamp
 - [ ] Lazy loading of the feed
-- [ ] Image storage for the posts
+- [x] Image storage for the posts
+- [x] Registration for users (using github)
+- [x] Profiles for different users
 
 ### Third stage:
 - [ ] Mobile application written in Flutter
-- [ ] Registration for users (using github)
-- [ ] Profiles for different users
 - [ ] Comments
-
+- [ ] CLI for consuming the api from command line
 
 <!-- CONTRIBUTING -->
 ## Contributing
