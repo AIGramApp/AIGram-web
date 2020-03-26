@@ -144,7 +144,8 @@ export default class App extends mixins(BaseComponent) {
     }
     auth() {
         let state = uuidv4();
-        window.location.href = `https://github.com/login/oauth/authorize?client_id=7f717d3d84f0c342fdce&scope=read:user,user:email&state=${state}`;
+        const clientId = process.env.VUE_APP_CLIENT_ID;
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=read:user,user:email&state=${state}`;
     }
     logout() {
         this.$store.dispatch("logout");

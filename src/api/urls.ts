@@ -4,6 +4,9 @@ export const join = (...args: string[]): string => {
 
 export const base = process.env.VUE_APP_API + "/api";
 const urls = {
+    csrf: {
+        base: "csrf"
+    },
     auth: {
         base: "auth"
     },
