@@ -1,4 +1,5 @@
 <!-- PROJECT LOGO -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7bb13518-b714-4ed3-be6b-dcf54d93a171/deploy-status)](https://app.netlify.com/sites/aigram/deploys)
 <br />
 <p align="center">
   <a href="https://github.com/AIGramApp/AIGram-web">
