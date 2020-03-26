@@ -11,7 +11,7 @@
     Instagram for everything AI-related
     <br />
     <br />
-    <a href="https://wonderful-visvesvaraya-7dfbae.netlify.com">View Demo</a>
+    <a href="https://aigram.ilkinmusayev.com">View Demo</a>
     ·
     <a href="https://github.com/AIGramApp/AIGram-web/issues">Report Bug</a>
     ·
