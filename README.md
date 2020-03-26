@@ -103,6 +103,8 @@ The project will be developed in several stages. The first stage only includes f
 
 Visit the demo link and login with Github. Then press the +Publish button, upload the photo, fill out the information and the post will be created in a matter of seconds.
 
+![Demo](./images/demo.gif)
+
 <!-- ROADMAP -->
 ## Roadmap
 
