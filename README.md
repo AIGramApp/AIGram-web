@@ -1,8 +1,5 @@
 <!-- PROJECT LOGO -->
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7bb13518-b714-4ed3-be6b-dcf54d93a171/deploy-status)](https://app.netlify.com/sites/aigram/deploys)
-[![GitHub license](https://img.shields.io/github/license/AIGramApp/AIGram-web)](https://github.com/AIGramApp/AIGram-web/blob/master/LICENSE)
-[![Heroku badge](https://img.shields.io/badge/HEROKU-Running%20on%20heroku-blue)](https://aigram-backend.herokuapp.com)
-
 <br />
 <p align="center">
   <a href="https://github.com/AIGramApp/AIGram-web">
