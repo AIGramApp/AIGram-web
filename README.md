@@ -12,7 +12,7 @@
     Instagram for everything AI-related
     <br />
     <br />
-    <a href="https://aigram.ilkinmusayev.com">View Demo</a>
+    <a href="https://aigram.netlify.com">View Demo</a>
     ·
     <a href="https://github.com/AIGramApp/AIGram-web/issues">Report Bug</a>
     ·
