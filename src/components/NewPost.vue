@@ -4,22 +4,44 @@
             <img class="w-full" :src="item.image" :alt="item.title" />
 
             <div class="px-6 py-4">
-                <input
-                    class="text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
-                    v-model="item.title"
-                    placeholder="Title"
-                />
-                <input
-                    class="text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
-                    v-model="item.description"
-                    placeholder="Summary"
-                />
-                <input
-                    class="text-gray-700 text-base mb-2 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
-                    v-model="item.link"
-                    placeholder="Link"
-                    type="link"
-                />
+                <div class="mb-2">
+                    <input
+                        class="text-base shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
+                        v-model="item.title"
+                        placeholder="Title"
+                        :class="{'border-red-500': errors && errors.title}"
+                    />
+                    <p
+                        class="text-red-500 text-xs italic"
+                        v-if="errors && errors.title"
+                    >Please enter the title</p>
+                </div>
+                <div class="mb-2">
+                    <input
+                        class="text-gray-700 text-base shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
+                        v-model="item.description"
+                        placeholder="Summary"
+                        :class="{'border-red-500': errors && errors.description}"
+                    />
+                    <p
+                        class="text-red-500 text-xs italic"
+                        v-if="errors && errors.description"
+                    >Please enter the summary</p>
+                </div>
+
+                <div class="md-2">
+                    <input
+                        class="text-gray-700 text-base shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline mt-1 block"
+                        v-model="item.link"
+                        placeholder="Link"
+                        type="link"
+                    />
+                    <p
+                        class="text-red-500 text-xs italic"
+                        v-if="errors && errors.link"
+                    >Please enter the link</p>
+                </div>
+
                 <vue-tags-input
                     @tags-changed="tagsChanged"
                     v-model="tag"
@@ -47,6 +69,11 @@ import VueTagsInput from "@johmun/vue-tags-input";
 export default class NewPost extends mixins(BaseComponent) {
     tag = "";
     tags = [];
+    errors: {
+        title: boolean;
+        description: boolean;
+        link: boolean;
+    } | null = null;
     get item() {
         return this.state.newPost!;
     }
@@ -54,12 +81,32 @@ export default class NewPost extends mixins(BaseComponent) {
         this.item.tags = tags.map(t => t.text);
     }
     submit() {
+        this.errors = {
+            title: false,
+            description: false,
+            link: false
+        };
+        const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+        const reg = new RegExp(expression);
+        if (this.item.title == "") {
+            this.errors.title = true;
+        }
+        if (this.item.description == "") {
+            this.errors.description = true;
+        }
+        if (this.item.link == "" || !this.item.link.match(reg)) {
+            this.errors.link = true;
+        }
+        if (this.errors.title || this.errors.description || this.errors.link) {
+            //If any errors show the errors
+            return;
+        }
         this.$emit("submit");
     }
 }
 </script>
 <style lang="css">
-.vue-tags-input .ti-input{
+.vue-tags-input .ti-input {
     border: none !important;
 }
 </style>

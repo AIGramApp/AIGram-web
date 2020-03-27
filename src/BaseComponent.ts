@@ -19,7 +19,7 @@ export default class BaseComponent extends Vue {
         this.$store.commit("setBookmarkMode", value);
         if (this.bookmarkMode) {
             //Only show bookmarked items
-            this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.id));
+            this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.id!));
         }
         else{
             this.$store.dispatch("feed");
@@ -44,11 +44,11 @@ export default class BaseComponent extends Vue {
     }
     setBookmark(item: FeedItem) {
         let bookmarks = this.state.bookmarks;
-        if (bookmarks.includes(item.id)) {
+        if (bookmarks.includes(item.id!)) {
             //Remove the element
             bookmarks = bookmarks.filter(i => i != item.id);
         } else {
-            bookmarks.push(item.id);
+            bookmarks.push(item.id!);
         }
         this.$store.commit("setBookmarks", bookmarks);
         this.$store.dispatch("saveBookmarks");

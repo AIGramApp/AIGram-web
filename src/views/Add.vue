@@ -21,7 +21,16 @@ import NewPost from '@/components/NewPost.vue';
 export default class Add extends mixins(BaseComponent) {
     mounted() {
         this.stage = AddPostStage.Image;
-        this.post = <FeedItem>{};
+        this.post = <FeedItem>{
+            id: null,
+            user: null,
+            image: "",
+            date: null,
+            title: "",
+            description: "",
+            link: "",
+            tags: []
+        };
     }
     fileAdded(file: File) {
         this.$store.dispatch("uploadImage", file).then(filename => {

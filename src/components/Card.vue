@@ -29,7 +29,7 @@
             <div class="font-bold text-xl mb-2">{{item.title}}</div>
             <p class="text-gray-700 text-base">{{item.description}}</p>
         </div>
-        <div class="px-6 py-4">
+        <div class="px-6 py-4" v-if="item.tags.length > 0">
             <span
                 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
                 v-for="tag in item.tags"
@@ -55,7 +55,7 @@ export default class Card extends mixins(BaseComponent) {
         this.$emit("bookmark", this.item);
     }
     get isBookmarked() {
-        return this.state.bookmarks.includes(this.item.id);
+        return this.state.bookmarks.includes(this.item.id!);
     }
 }
 </script>
