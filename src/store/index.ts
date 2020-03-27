@@ -20,6 +20,8 @@ export interface AppState {
     newPost: FeedItem | null;
 
     profile: UserProfile | null;
+
+    loading: boolean;
 }
 
 const store: StoreOptions<AppState> = {
@@ -31,7 +33,8 @@ const store: StoreOptions<AppState> = {
         user: null,
         newPostStage: AddPostStage.Image,
         newPost: null,
-        profile: null
+        profile: null,
+        loading: false
     },
     mutations: {
         setFeed(state, feed) {
@@ -57,6 +60,9 @@ const store: StoreOptions<AppState> = {
         },
         setProfile(state, profile){
             state.profile = profile;
+        },
+        setLoading(state, value){
+            state.loading = value;
         }
     },
     actions: {

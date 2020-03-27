@@ -53,8 +53,11 @@ export default class Add extends mixins(BaseComponent) {
     }
     submit()
     {
+        this.loading = true;
         this.$store.dispatch("publishPost").then(() => {
             this.$router.push({name: 'home'});
+        }).finally(() => {
+            this.loading = false;
         });
     }
 }

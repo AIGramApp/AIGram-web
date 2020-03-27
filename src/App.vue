@@ -107,6 +107,12 @@
                 </div>
             </div>
         </div>
+
+        <loading
+            :active.sync="loading"
+            :can-cancel="false"
+            :is-full-page="true"
+        ></loading>
     </div>
 </template>
 
@@ -117,9 +123,11 @@ import { mixins } from "vue-class-component";
 import BaseComponent from "@/BaseComponent";
 import { v4 as uuidv4 } from "uuid";
 import AccountDropdown from "@/components/AccountDropdown.vue";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 @Component({
-    components: { AccountDropdown }
+    components: { AccountDropdown, Loading }
 })
 export default class App extends mixins(BaseComponent) {
     mounted() {
@@ -150,14 +158,10 @@ export default class App extends mixins(BaseComponent) {
     logout() {
         this.$store.dispatch("logout");
     }
-    add()
-    {
-        if(this.hasUser)
-        {
-            this.$router.push({name: 'add'});
-        }
-        else
-        {
+    add() {
+        if (this.hasUser) {
+            this.$router.push({ name: "add" });
+        } else {
             this.auth();
         }
     }

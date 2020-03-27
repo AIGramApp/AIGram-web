@@ -15,13 +15,13 @@ export default class BaseComponent extends Vue {
         this.$store.commit("setSearch", value);
     }
     set bookmarkMode(value: boolean) {
-        this.$router.push({name: 'home'});
+        this.$router.push({ name: 'home' });
         this.$store.commit("setBookmarkMode", value);
         if (this.bookmarkMode) {
             //Only show bookmarked items
             this.feed = this.feed.filter((item) => this.state.bookmarks.includes(item.id!));
         }
-        else{
+        else {
             this.$store.dispatch("feed");
         }
     }
@@ -34,12 +34,10 @@ export default class BaseComponent extends Vue {
     set feed(value: Array<FeedItem>) {
         this.$store.commit("setFeed", value);
     }
-    get hasUser()
-    {
+    get hasUser() {
         return this.state.user != null;
     }
-    get user()
-    {
+    get user() {
         return this.state.user!;
     }
     setBookmark(item: FeedItem) {
@@ -52,5 +50,11 @@ export default class BaseComponent extends Vue {
         }
         this.$store.commit("setBookmarks", bookmarks);
         this.$store.dispatch("saveBookmarks");
+    }
+    get loading() {
+        return this.state.loading;
+    }
+    set loading(value: boolean) {
+        this.$store.commit("setLoading", value);
     }
 }
