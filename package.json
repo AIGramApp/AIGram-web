@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@johmun/vue-tags-input": "^2.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "js-cookie": "^2.2.1",
     "moment": "^2.24.0",
